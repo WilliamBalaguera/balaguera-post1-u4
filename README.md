@@ -25,5 +25,5 @@ arrow functions, template literals y desestructuración.
 
 ## Capturas de pantalla
 ![chekpoint 1](img/image.png)
-[chekpoint 2](img/image-1.png)
+![chekpoint 2](img/image-1.png)
 ![chekpoint 3](img/image-2.png)
