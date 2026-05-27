@@ -58,3 +58,46 @@ function agregarTarjeta() {
 
 // Registrar el evento del botón
 document.querySelector("#btn-agregar").addEventListener("click", agregarTarjeta);
+// ── Eliminar tarjeta con delegación de eventos ──
+galeria.addEventListener("click", (e) => {
+  // Verificar que el clic fue en un botón de eliminar
+  if (!e.target.matches(".btn-eliminar")) return;
+
+  const idEliminar = Number(e.target.dataset.id);
+
+  // Eliminar del estado
+  tarjetas = tarjetas.filter(t => t.id !== idEliminar);
+
+  // Eliminar del DOM
+  const elementoTarjeta = galeria.querySelector(`[data-id="${idEliminar}"]`);
+  if (elementoTarjeta) elementoTarjeta.remove();
+
+  // Actualizar contador
+  actualizarContador();
+});
+// ── Filtrar tarjetas por categoría ──
+const btnsFiltro = document.querySelectorAll(".btn-filtro");
+
+btnsFiltro.forEach(btn => {
+  btn.addEventListener("click", () => {
+    // Resaltar el botón activo
+    btnsFiltro.forEach(b => b.classList.remove("activo"));
+    btn.classList.add("activo");
+
+    const categoriaFiltro = btn.dataset.categoria;
+
+    // Mostrar u ocultar cada tarjeta según la categoría
+    const todasLasTarjetas = galeria.querySelectorAll(".tarjeta");
+    todasLasTarjetas.forEach(tarjeta => {
+      if (categoriaFiltro === "todas") {
+        tarjeta.classList.remove("oculta");
+      } else {
+        const coincide = tarjeta.classList.contains(`categoria-${categoriaFiltro}`);
+        tarjeta.classList.toggle("oculta", !coincide);
+      }
+    });
+
+    // Actualizar contador
+    actualizarContador();
+  });
+});
