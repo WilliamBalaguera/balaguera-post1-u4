@@ -101,3 +101,27 @@ btnsFiltro.forEach(btn => {
     actualizarContador();
   });
 });
+// ── Contador de tarjetas y mensaje de galería vacía ──
+function actualizarContador() {
+  const visibles = galeria.querySelectorAll(".tarjeta:not(.oculta)").length;
+
+  let contador = document.querySelector("#contador");
+  if (!contador) {
+    contador = document.createElement("p");
+    contador.id = "contador";
+    document.querySelector("#filtros").insertAdjacentElement("afterend", contador);
+  }
+  contador.textContent = `Mostrando ${visibles} tarjeta(s)`;
+
+  // Mensaje de galería vacía
+  const sinTarjetas = galeria.querySelectorAll(".tarjeta").length === 0;
+  if (sinTarjetas) {
+    galeria.innerHTML = `<p class="mensaje-vacio">No hay tarjetas. Crea la primera usando el formulario.</p>`;
+  } else {
+    const msgVacio = galeria.querySelector(".mensaje-vacio");
+    if (msgVacio) msgVacio.remove();
+  }
+}
+
+// Llamar al cargar la página para mostrar el estado inicial
+actualizarContador();

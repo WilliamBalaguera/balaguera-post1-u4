@@ -1,0 +1,159 @@
+/* ── Reset global ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── Variables ── */
+:root {
+  --primary   : #C62828;
+  --secondary : #E53935;
+  --dark      : #8E0000;
+  --bg        : #F5F5F5;
+  --white     : #FFFFFF;
+  --text      : #212121;
+  --grey      : #808080;
+  --radius    : 8px;
+  --shadow    : 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* ── Base ── */
+body {
+  font-family : Arial, Helvetica, sans-serif;
+  background  : var(--bg);
+  color       : var(--text);
+  padding     : 0 0 2rem;
+}
+
+/* ── Header ── */
+header {
+  background  : var(--primary);
+  color       : var(--white);
+  padding     : 1.5rem;
+  text-align  : center;
+  margin-bottom: 1.5rem;
+}
+
+/* ── Controles ── */
+#controles {
+  display         : flex;
+  flex-wrap       : wrap;
+  gap             : 0.75rem;
+  justify-content : center;
+  padding         : 0 1rem;
+  margin-bottom   : 1rem;
+}
+
+#controles input,
+#controles select {
+  padding       : 0.5rem 0.75rem;
+  border        : 1px solid #ccc;
+  border-radius : var(--radius);
+  font-size     : 0.95rem;
+  min-width     : 180px;
+}
+
+#btn-agregar {
+  padding          : 0.5rem 1.25rem;
+  background       : var(--primary);
+  color            : var(--white);
+  border           : none;
+  border-radius    : var(--radius);
+  font-size        : 0.95rem;
+  font-weight      : 700;
+  cursor           : pointer;
+  transition       : background 0.2s;
+}
+#btn-agregar:hover { background: var(--secondary); }
+
+/* ── Filtros ── */
+#filtros {
+  display         : flex;
+  gap             : 0.5rem;
+  justify-content : center;
+  margin-bottom   : 0.5rem;
+  flex-wrap       : wrap;
+  padding         : 0 1rem;
+}
+
+.btn-filtro {
+  padding       : 0.4rem 1rem;
+  border        : 2px solid var(--primary);
+  border-radius : 2rem;
+  background    : var(--white);
+  color         : var(--primary);
+  font-weight   : 700;
+  cursor        : pointer;
+  transition    : background 0.2s, color 0.2s;
+}
+.btn-filtro:hover  { background: var(--primary); color: var(--white); }
+.btn-filtro.activo { background: var(--primary); color: var(--white); }
+
+/* ── Contador ── */
+#contador {
+  text-align    : center;
+  color         : var(--grey);
+  font-size     : 0.9rem;
+  margin-bottom : 1.5rem;
+}
+
+/* ── Galería ── */
+#galeria {
+  display               : grid;
+  grid-template-columns : repeat(auto-fill, minmax(240px, 1fr));
+  gap                   : 1rem;
+  padding               : 0 1.5rem;
+  max-width             : 1100px;
+  margin                : 0 auto;
+}
+
+/* ── Tarjeta ── */
+.tarjeta {
+  background    : var(--white);
+  border-radius : var(--radius);
+  padding       : 1.25rem;
+  box-shadow    : var(--shadow);
+  display       : flex;
+  flex-direction: column;
+  gap           : 0.5rem;
+  border-top    : 4px solid var(--primary);
+}
+
+.tarjeta h3   { font-size: 1.1rem; color: var(--primary); }
+.tarjeta p    { font-size: 0.9rem; color: var(--text); flex-grow: 1; }
+
+/* ── Badge ── */
+.badge {
+  display       : inline-block;
+  padding       : 2px 10px;
+  border-radius : 2rem;
+  font-size     : 0.75rem;
+  font-weight   : 700;
+  background    : var(--bg);
+  color         : var(--primary);
+  border        : 1px solid var(--primary);
+  width         : fit-content;
+}
+
+/* ── Botón eliminar ── */
+.btn-eliminar {
+  padding       : 0.4rem 0.8rem;
+  background    : var(--white);
+  color         : var(--primary);
+  border        : 1px solid var(--primary);
+  border-radius : var(--radius);
+  cursor        : pointer;
+  font-size     : 0.85rem;
+  transition    : background 0.2s, color 0.2s;
+  align-self    : flex-start;
+}
+.btn-eliminar:hover { background: var(--primary); color: var(--white); }
+
+/* ── Tarjeta oculta ── */
+.oculta { display: none; }
+
+/* ── Mensaje vacío ── */
+.mensaje-vacio {
+  text-align  : center;
+  color       : var(--grey);
+  font-size   : 1rem;
+  padding     : 2rem;
+  grid-column : 1 / -1;
+}
